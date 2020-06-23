@@ -1,0 +1,21 @@
+<form method="GET" action="/cryptids">
+    <label for="nameFilter">Filter by Name</label>
+    <input id="nameFilter" type="text" name="nameFilter">
+    <input type="submit">
+</form>
+
+<ul>
+    <% myCryptids.forEach((crypt, index) => { %>
+        <div class="tooltip">
+            <li>
+                <img class="cryptimg" src="<%=crypt.img_url%>">
+            </li>
+        </div>
+    <li><%= crypt.name %> the <%= crypt.type %>
+        <a href="/cryptids/edit/<%= index %>">Edit</a>
+        <form method="POST" action="/cryptids/<%= index %>/?_method=DELETE">
+            <input type="submit" value="Delete">
+        </form>
+    </li>
+    <% }) %>
+    </ul>
